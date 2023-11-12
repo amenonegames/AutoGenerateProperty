@@ -62,7 +62,7 @@ namespace AutoProperty
             var receiver = context.SyntaxReceiver as SyntaxReceiver;
             if (receiver == null) return;
             
-            var fieldSymbols = new List<(IFieldSymbol field,ITypeSymbol type , bool includeSetter)>();
+            var fieldSymbols = new List<(IFieldSymbol field, ITypeSymbol sourceType , ITypeSymbol targetType , bool includeSetter)>();
 
             foreach (var field in receiver.TargetFields)
             {
@@ -78,12 +78,13 @@ namespace AutoProperty
                     {
                         // 'Type' プロパティの値を取得
                         TypedConstant typeArgument = attribute.ConstructorArguments[0];
-                        ITypeSymbol typeSymbol = typeArgument.IsNull ? fieldSymbol.Type : (ITypeSymbol)typeArgument.Value;
+                        ITypeSymbol sourceType = fieldSymbol.Type;
+                        ITypeSymbol targetType = typeArgument.IsNull ? fieldSymbol.Type : (ITypeSymbol)typeArgument.Value;
 
                         // 'IncludeSetter' プロパティの値を取得（デフォルトは false）
                         bool includeSetter = attribute.ConstructorArguments[1].Value as bool? ?? false;
 
-                        fieldSymbols.Add((fieldSymbol, typeSymbol, includeSetter));
+                        fieldSymbols.Add((fieldSymbol,sourceType, targetType, includeSetter));
                     }
                 }
             }
@@ -105,7 +106,7 @@ namespace AutoProperty
             
         }
         
-        private string ProcessClass(INamedTypeSymbol classSymbol, List<(IFieldSymbol field, ITypeSymbol type, bool includeSetter)> fieldSymbols)
+        private string ProcessClass(INamedTypeSymbol classSymbol, List<(IFieldSymbol field, ITypeSymbol sourceType , ITypeSymbol targetType , bool includeSetter)> fieldSymbols)
         {
             var namespaceName = classSymbol.ContainingNamespace.IsGlobalNamespace ? "" : $"namespace {classSymbol.ContainingNamespace.ToDisplayString()}\n{{\n";
             var classDeclaration = $"public partial class {classSymbol.Name}\n{{\n";
@@ -114,10 +115,19 @@ namespace AutoProperty
             builder.Append(namespaceName);
             builder.Append(classDeclaration);
 
-            foreach (var (field, type, includeSetter) in fieldSymbols)
+            foreach (var (field, sourceType , targetType, includeSetter) in fieldSymbols)
             {
-                var className = type.ToDisplayString();
+                var className = targetType.ToDisplayString();
                 var propertyName = GetPropertyName(field.Name);
+                
+                if(sourceType.ToDisplayString() != targetType.ToDisplayString())
+                {
+                    builder.Append($@"
+    /// <summary>
+    /// {targetType} must implement implicit operator from {sourceType}.
+    /// </summary>");
+                }
+                
                 builder.Append($@"
     public {className} {propertyName}
     {{
@@ -166,6 +176,21 @@ namespace AutoProperty
             // 大文字に変換可能な文字がない場合
             return "NoLetterCanUppercase";
         }
+        
+        class TypeSymbolEqualityComparer : IEqualityComparer<ITypeSymbol>
+        {
+            public bool Equals(ITypeSymbol x, ITypeSymbol y)
+            {
+                return x.ToDisplayString() == y.ToDisplayString();
+            }
+
+            public int GetHashCode(ITypeSymbol obj)
+            {
+                return obj.ToDisplayString().GetHashCode();
+            }
+        }
+        
+
     }
 
     class SyntaxReceiver : ISyntaxReceiver
