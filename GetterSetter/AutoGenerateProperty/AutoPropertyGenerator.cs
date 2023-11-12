@@ -44,6 +44,11 @@ namespace AutoProperty
             Type = type;
             IncludeSetter = includeSetter;
         }
+        
+        public AutoPropAttribute(bool includeSetter = false)
+        {
+            IncludeSetter = includeSetter;
+        }
     }
 }
 ";            
@@ -77,12 +82,14 @@ namespace AutoProperty
                     if (attribute != null)
                     {
                         // 'Type' プロパティの値を取得
-                        TypedConstant typeArgument = attribute.ConstructorArguments[0];
+                        TypedConstant typeArgument = attribute.ConstructorArguments
+                            .FirstOrDefault(x=>x.Type != null && (x.Type != null && x.Type.Name == "type" || x.Type.Name == "Type"));
                         ITypeSymbol sourceType = fieldSymbol.Type;
                         ITypeSymbol targetType = typeArgument.IsNull ? fieldSymbol.Type : (ITypeSymbol)typeArgument.Value;
 
                         // 'IncludeSetter' プロパティの値を取得（デフォルトは false）
-                        bool includeSetter = attribute.ConstructorArguments[1].Value as bool? ?? false;
+                        bool includeSetter = attribute.ConstructorArguments
+                            .FirstOrDefault(x=>x.Type != null && x.Type.ToDisplayString() == "bool").Value as bool? ?? false;
 
                         fieldSymbols.Add((fieldSymbol,sourceType, targetType, includeSetter));
                     }
