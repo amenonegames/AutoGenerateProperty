@@ -122,39 +122,54 @@ namespace AutoProperty
             builder.Append(namespaceName);
             builder.Append(classDeclaration);
 
-            foreach (var (field, sourceType , targetType, includeSetter) in fieldSymbols)
+            foreach (var (field, sourceType, targetType, includeSetter) in fieldSymbols)
             {
                 var className = targetType.ToDisplayString();
+                var sourceClassName = sourceType.ToDisplayString();
                 var propertyName = GetPropertyName(field.Name);
-                
-                if(sourceType.ToDisplayString() != targetType.ToDisplayString())
-                {
-                    builder.Append($@"
-    /// <summary>
-    /// {targetType} must implement implicit operator from {sourceType}.
-    /// </summary>");
-                }
+                bool typeIsSame = className == sourceClassName;
                 
                 builder.Append($@"
     public {className} {propertyName}
     {{
         get
-        {{
+        {{");
+                if (typeIsSame)
+                {
+                    builder.Append($@"
             return this.{field.Name};
         }}");
+                }
+                else
+                {
+                    builder.Append($@"
+            return ({className})this.{field.Name};
+        }}");
+                }
+                
 
                 if (includeSetter)
                 {
                     builder.Append($@"
         set
-        {{
+        {{");
+                    if (typeIsSame)
+                    {
+                        builder.Append($@"
             this.{field.Name} = value;
         }}");
-                }
+                    }
+                    else
+                    {
+                        builder.Append($@"
+            this.{field.Name} = ({sourceClassName})value;
+        }}");
+                    }
 
-                builder.Append($@"
+                    builder.Append($@"
     }}
 ");
+                }
             }
 
             builder.Append("}\n"); // Close class
@@ -184,18 +199,26 @@ namespace AutoProperty
             return "NoLetterCanUppercase";
         }
         
-        class TypeSymbolEqualityComparer : IEqualityComparer<ITypeSymbol>
+        private (bool Implicit ,bool Explicit) CheckConversionInType(ITypeSymbol typeToCheck, ITypeSymbol targetType)
         {
-            public bool Equals(ITypeSymbol x, ITypeSymbol y)
+            (bool Implicit ,bool Explicit) result = (false ,false);
+                    
+            foreach (var member in typeToCheck.GetMembers())
             {
-                return x.ToDisplayString() == y.ToDisplayString();
+                if (member is IMethodSymbol methodSymbol &&
+                    methodSymbol.MethodKind == MethodKind.Conversion &&
+                    methodSymbol.ReturnType.Equals(targetType, SymbolEqualityComparer.Default))
+                {
+                    if(methodSymbol.IsImplicitlyDeclared)
+                        result.Implicit = true;
+                    else
+                        result.Explicit = true;
+                }
             }
-
-            public int GetHashCode(ITypeSymbol obj)
-            {
-                return obj.ToDisplayString().GetHashCode();
-            }
+            
+            return result;
         }
+        
         
 
     }
