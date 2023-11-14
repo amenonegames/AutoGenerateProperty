@@ -9,6 +9,9 @@
         PrivateGetSet = 1 << 4,
         ProtectedGet = 1 << 5,
         ProtectedGetSet = 1 << 6,
-        ProtectedGetPrivateSet = 1 << 7
+        ProtectedGetPrivateSet = 1 << 7,
+        InternalGet = 1 << 8,
+        InternalGetSet = 1 << 9,
+        InternalGetPrivateSet = 1 << 10,
     }
 }
