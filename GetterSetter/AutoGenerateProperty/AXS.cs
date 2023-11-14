@@ -1,0 +1,14 @@
+﻿namespace GetterSetter
+{
+    public enum AXS
+    {
+        PublicGet = 1,
+        PublicGetSet = 1 << 1,
+        PublicGetPrivateSet = 1 << 2,
+        PrivateGet = 1 << 3,
+        PrivateGetSet = 1 << 4,
+        ProtectedGet = 1 << 5,
+        ProtectedGetSet = 1 << 6,
+        ProtectedGetPrivateSet = 1 << 7
+    }
+}
