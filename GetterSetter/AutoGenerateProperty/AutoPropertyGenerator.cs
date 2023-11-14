@@ -49,7 +49,7 @@ namespace AutoProperty
     }
 
     [Flags]
-    public enum AXS
+    internal enum AXS
     {
         PublicGet = 1,
         PublicGetSet = 1 << 1,
