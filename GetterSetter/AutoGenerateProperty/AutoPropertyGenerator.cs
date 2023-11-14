@@ -61,6 +61,10 @@ namespace AutoProperty
         ProtectedGetPrivateSet = 1 << 7,
         InternalGet = 1 << 8,
         InternalGetSet = 1 << 9,
+        InternalGetPrivateSet = 1 << 10,
+        ProtectedInternalGet = 1 << 11,
+        ProtectedInternalGetSet = 1 << 12,
+        ProtectedInternalGetPrivateSet = 1 << 13,
     }
 }
 ";            
@@ -186,6 +190,15 @@ namespace AutoProperty
         get
         {{");
                         break;
+                    case AXS.ProtectedInternalGet:
+                    case AXS.ProtectedInternalGetSet:
+                    case AXS.ProtectedInternalGetPrivateSet:
+                        builder.Append($@"
+    protected internal {className} {propertyName}
+    {{
+        get
+        {{");
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -210,6 +223,7 @@ namespace AutoProperty
                     case AXS.ProtectedGetSet:
                     case AXS.PublicGetSet:
                     case AXS.InternalGetSet:
+                    case AXS.ProtectedInternalGetSet:
                         builder.Append($@"
         set
         {{");
@@ -231,6 +245,7 @@ namespace AutoProperty
                     case AXS.PublicGetPrivateSet:
                     case AXS.ProtectedGetPrivateSet:
                     case AXS.InternalGetPrivateSet:
+                    case AXS.ProtectedInternalGetPrivateSet:
                         builder.Append($@"
         private set
         {{");

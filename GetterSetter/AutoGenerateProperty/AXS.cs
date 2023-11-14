@@ -13,5 +13,8 @@
         InternalGet = 1 << 8,
         InternalGetSet = 1 << 9,
         InternalGetPrivateSet = 1 << 10,
+        ProtectedInternalGet = 1 << 11,
+        ProtectedInternalGetSet = 1 << 12,
+        ProtectedInternalGetPrivateSet = 1 << 13,
     }
 }
