@@ -167,7 +167,7 @@ namespace AutoProperty
                     case AXS.PublicGetSet:
                     case AXS.PublicGetPrivateSet:
                         builder.Append($@"
-    private {className} {propertyName}
+    public {className} {propertyName}
     {{
         get
         {{");
