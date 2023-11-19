@@ -35,6 +35,11 @@ namespace AutoProperty
     
         public Type Type { get; set; }
         public AXS AXSType { get; set; }
+        
+        public AutoPropAttribute(AXS access = AXS.PublicGet)
+        {
+            AXSType = access;
+        }
 
         public AutoPropAttribute(Type type, AXS access = AXS.PublicGet)
         {
@@ -42,10 +47,7 @@ namespace AutoProperty
             AXSType = access;
         }
         
-        public AutoPropAttribute(AXS access = AXS.PublicGet)
-        {
-            AXSType = access;
-        }
+
     }
 
     [Flags]
@@ -93,14 +95,14 @@ namespace AutoProperty
                     var fieldSymbol = model.GetDeclaredSymbol(variable) as IFieldSymbol;
 
                     var arguments = field.attr.ArgumentList?.Arguments;
+                    (IFieldSymbol field, ITypeSymbol sourceType , ITypeSymbol targetType , AXS acess) result =
+                        (fieldSymbol, fieldSymbol.Type, fieldSymbol.Type, AXS.PublicGet);
                     if (arguments.HasValue)
                     {
-                        (IFieldSymbol field, ITypeSymbol sourceType , ITypeSymbol targetType , AXS acess) result =
-                            (fieldSymbol, fieldSymbol.Type, fieldSymbol.Type, AXS.PublicGet);
-                        
                         foreach (var argument in arguments)
                         {
                             var expr = argument.Expression;
+                            
                             if ( expr is TypeOfExpressionSyntax typeOfExpr)
                             {
                                 var typeSymbol = model.GetSymbolInfo(typeOfExpr.Type).Symbol as ITypeSymbol;
@@ -112,11 +114,10 @@ namespace AutoProperty
                                 var parsed = Enum.ToObject(typeof(AXS), model.GetConstantValue(expr).Value);
                                 result.acess = (AXS)parsed;
                             }
-                            
+           
                         }
-                        
-                        fieldSymbols.Add(result);
                     }
+                    fieldSymbols.Add(result);
                 }
             }
             

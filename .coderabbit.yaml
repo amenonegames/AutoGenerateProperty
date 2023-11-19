@@ -1,0 +1,22 @@
+language: "jp"
+early_access: true
+reviews:
+  high_level_summary: true
+  poem: true
+  review_status: true
+  collapse_walkthrough: false
+  path_filters:
+    - "!**/.xml"
+  path_instructions:
+    - path: ".*"
+      instructions: "Roslynを利用したプロパティ自動実装機能のプロジェクトです。DLLにビルドしたものをUnityに配置して利用します。"
+  auto_review:
+    enabled: true
+    ignore_title_keywords:
+      - "WIP"
+      - "DO NOT MERGE"
+    drafts: false
+    base_branches:
+      - ".*"
+chat:
+  auto_reply: true
