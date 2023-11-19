@@ -1,5 +1,8 @@
-﻿namespace GetterSetter
+﻿using System;
+
+namespace GetterSetter
 {
+    [Flags]
     public enum AXS
     {
         PublicGet = 1,
