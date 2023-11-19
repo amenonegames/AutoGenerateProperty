@@ -36,12 +36,14 @@ namespace AutoProperty
         public Type Type { get; set; }
         public AXS AXSType { get; set; }
         
-        public AutoPropAttribute(AXS access = AXS.PublicGet)
+        // デフォルトアクセスレベルを変える場合は、ここを変更する
+        public AutoPropAttribute(AXS access = AXS.PrivateGet)
         {
             AXSType = access;
         }
 
-        public AutoPropAttribute(Type type, AXS access = AXS.PublicGet)
+        // デフォルトアクセスレベルを変える場合は、ここを変更する
+        public AutoPropAttribute(Type type, AXS access = AXS.PrivateGet)
         {
             Type = type;
             AXSType = access;
@@ -96,7 +98,7 @@ namespace AutoProperty
 
                     var arguments = field.attr.ArgumentList?.Arguments;
                     (IFieldSymbol field, ITypeSymbol sourceType , ITypeSymbol targetType , AXS acess) result =
-                        (fieldSymbol, fieldSymbol.Type, fieldSymbol.Type, AXS.PublicGet);
+                        (fieldSymbol, fieldSymbol.Type, fieldSymbol.Type, AXS.PrivateGet); // デフォルトアクセスレベルを変える場合は、ここを変更する
                     if (arguments.HasValue)
                     {
                         foreach (var argument in arguments)
