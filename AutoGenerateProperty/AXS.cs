@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GetterSetter
+namespace Amenonegames.AutoProperty.Generator
 {
     [Flags]
     public enum AXS
