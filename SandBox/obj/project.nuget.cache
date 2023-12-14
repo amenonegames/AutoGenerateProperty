@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "nJ5w0KF/nbYqDz5QHGVmH3h5C5bcqq+fLahnr7z4HdpBONU8ckT/jKTLlP5wR7ufqNlZyYcV3GxCBPG7wo1+oQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tamed\\Documents\\project\\AutoGenerateProperty\\SandBox\\SandBox.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tamed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\tamed\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,10 @@
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\bin\Release\netstandard2.0\SandBox.deps.json
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\bin\Release\netstandard2.0\SandBox.dll
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\bin\Release\netstandard2.0\SandBox.pdb
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.csproj.AssemblyReference.cache
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.AssemblyInfoInputs.cache
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.AssemblyInfo.cs
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.csproj.CoreCompileInputs.cache
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.dll
+C:\Users\tamed\Documents\project\AutoGenerateProperty\SandBox\obj\Release\netstandard2.0\SandBox.pdb
