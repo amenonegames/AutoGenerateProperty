@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "AutoGenerateProperty/1.0.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis": "3.9.0",
+          "Microsoft.CodeAnalysis": "4.1.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -38,16 +38,16 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis/3.9.0": {
+      "Microsoft.CodeAnalysis/4.1.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp.Workspaces": "3.9.0",
-          "Microsoft.CodeAnalysis.VisualBasic.Workspaces": "3.9.0"
+          "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.1.0",
+          "Microsoft.CodeAnalysis.VisualBasic.Workspaces": "4.1.0"
         }
       },
-      "Microsoft.CodeAnalysis.Analyzers/3.0.0": {},
-      "Microsoft.CodeAnalysis.Common/3.9.0": {
+      "Microsoft.CodeAnalysis.Analyzers/3.3.3": {},
+      "Microsoft.CodeAnalysis.Common/4.1.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.0.0",
+          "Microsoft.CodeAnalysis.Analyzers": "3.3.3",
           "System.Collections.Immutable": "5.0.0",
           "System.Memory": "4.5.4",
           "System.Reflection.Metadata": "5.0.0",
@@ -57,8 +57,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -103,14 +103,14 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp/3.9.0": {
+      "Microsoft.CodeAnalysis.CSharp/4.1.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "3.9.0"
+          "Microsoft.CodeAnalysis.Common": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.CSharp.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -155,17 +155,17 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp.Workspaces/3.9.0": {
+      "Microsoft.CodeAnalysis.CSharp.Workspaces/4.1.0": {
         "dependencies": {
           "Humanizer.Core": "2.2.0",
-          "Microsoft.CodeAnalysis.CSharp": "3.9.0",
-          "Microsoft.CodeAnalysis.Common": "3.9.0",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "3.9.0"
+          "Microsoft.CodeAnalysis.CSharp": "4.1.0",
+          "Microsoft.CodeAnalysis.Common": "4.1.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -210,14 +210,14 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.VisualBasic/3.9.0": {
+      "Microsoft.CodeAnalysis.VisualBasic/4.1.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "3.9.0"
+          "Microsoft.CodeAnalysis.Common": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.VisualBasic.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -262,16 +262,16 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.VisualBasic.Workspaces/3.9.0": {
+      "Microsoft.CodeAnalysis.VisualBasic.Workspaces/4.1.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "3.9.0",
-          "Microsoft.CodeAnalysis.VisualBasic": "3.9.0",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "3.9.0"
+          "Microsoft.CodeAnalysis.Common": "4.1.0",
+          "Microsoft.CodeAnalysis.VisualBasic": "4.1.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -316,18 +316,18 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Workspaces.Common/3.9.0": {
+      "Microsoft.CodeAnalysis.Workspaces.Common/4.1.0": {
         "dependencies": {
           "Humanizer.Core": "2.2.0",
           "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
-          "Microsoft.CodeAnalysis.Common": "3.9.0",
+          "Microsoft.CodeAnalysis.Common": "4.1.0",
           "System.Composition": "1.0.31",
-          "System.IO.Pipelines": "5.0.0"
+          "System.IO.Pipelines": "5.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Workspaces.dll": {
-            "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.900.21.12420"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
           }
         },
         "resources": {
@@ -543,7 +543,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.IO.Pipelines/5.0.0": {
+      "System.IO.Pipelines/5.0.1": {
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.4",
@@ -551,8 +551,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.IO.Pipelines.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
+            "assemblyVersion": "5.0.0.1",
+            "fileVersion": "5.0.120.57516"
           }
         }
       },
@@ -823,61 +823,61 @@
       "path": "microsoft.bcl.asyncinterfaces/5.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis/3.9.0": {
+    "Microsoft.CodeAnalysis/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U3cs4UuYHmpb5NELfOvPtmCw54Utt6uRoGMTBHr4y7LW9TuqbjCCCYZJ6Mxl17mKmWbtX0nSH9isQ55F0MynQw==",
-      "path": "microsoft.codeanalysis/3.9.0",
-      "hashPath": "microsoft.codeanalysis.3.9.0.nupkg.sha512"
+      "sha512": "sha512-kMackQJPbJOee86dAt+4xZEBMW8gJ2KLFu2JXOqXAO9Hiy4gini7Gz+spg7viGNMFuNVt423MUrfdnDngo93CA==",
+      "path": "microsoft.codeanalysis/4.1.0",
+      "hashPath": "microsoft.codeanalysis.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Analyzers/3.0.0": {
+    "Microsoft.CodeAnalysis.Analyzers/3.3.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ojG5pGAhTPmjxRGTNvuszO3H8XPZqksDwr9xLd4Ae/JBjZZdl6GuoLk7uLMf+o7yl5wO0TAqoWcEKkEWqrZE5g==",
-      "path": "microsoft.codeanalysis.analyzers/3.0.0",
-      "hashPath": "microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512"
+      "sha512": "sha512-j/rOZtLMVJjrfLRlAMckJLPW/1rze9MT1yfWqSIbUPGRu1m1P0fuo9PmqapwsmePfGB5PJrudQLvmUOAMF0DqQ==",
+      "path": "microsoft.codeanalysis.analyzers/3.3.3",
+      "hashPath": "microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Common/3.9.0": {
+    "Microsoft.CodeAnalysis.Common/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HiWjF7PNIEngmFg2Xk8cZ/83lRIRkk9v+5ibbY5B7VvjNGdClGAMuWtZER9F5rGRR41VbJLco9ah73jFTh4vPw==",
-      "path": "microsoft.codeanalysis.common/3.9.0",
-      "hashPath": "microsoft.codeanalysis.common.3.9.0.nupkg.sha512"
+      "sha512": "sha512-bNzTyxP3iD5FPFHfVDl15Y6/wSoI7e3MeV0lOaj9igbIKTjgrmuw6LoVJ06jUNFA7+KaDC/OIsStWl/FQJz6sQ==",
+      "path": "microsoft.codeanalysis.common/4.1.0",
+      "hashPath": "microsoft.codeanalysis.common.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp/3.9.0": {
+    "Microsoft.CodeAnalysis.CSharp/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NTsiK3fnoZGemy4dBHrILwg9rL+jDnOJ7aixFu4EOWM1r6MZMrNCIhT2tO4AmIMdfICLPwj910uZRRLpbMnqHg==",
-      "path": "microsoft.codeanalysis.csharp/3.9.0",
-      "hashPath": "microsoft.codeanalysis.csharp.3.9.0.nupkg.sha512"
+      "sha512": "sha512-sbu6kDGzo9bfQxuqWpeEE7I9P30bSuZEnpDz9/qz20OU6pm79Z63+/BsAzO2e/R/Q97kBrpj647wokZnEVr97w==",
+      "path": "microsoft.codeanalysis.csharp/4.1.0",
+      "hashPath": "microsoft.codeanalysis.csharp.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp.Workspaces/3.9.0": {
+    "Microsoft.CodeAnalysis.CSharp.Workspaces/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GeDDyxAN+yJmjF7+i4SMuvXL54uuug9fQ9ACzlCDQv1t+OXPdArGyxC1pTOAERZ9ylPRFduZdG3Kkn0a73ksSA==",
-      "path": "microsoft.codeanalysis.csharp.workspaces/3.9.0",
-      "hashPath": "microsoft.codeanalysis.csharp.workspaces.3.9.0.nupkg.sha512"
+      "sha512": "sha512-VXAz9xHBcgAXr5+WD9tT4S/bfW0x7raIUB5DPsnXpOrlOcN1RuDBq2UYofK8L693u63FNuRWI3BcFjFdprMhIg==",
+      "path": "microsoft.codeanalysis.csharp.workspaces/4.1.0",
+      "hashPath": "microsoft.codeanalysis.csharp.workspaces.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.VisualBasic/3.9.0": {
+    "Microsoft.CodeAnalysis.VisualBasic/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0s2fIafB30oihBJMa5ya2hZFu4T78A7j66nTIrrmQC1jP446Z0F+6eyVHUL4oigNLAg1mqO1F3goktJRBLkrFw==",
-      "path": "microsoft.codeanalysis.visualbasic/3.9.0",
-      "hashPath": "microsoft.codeanalysis.visualbasic.3.9.0.nupkg.sha512"
+      "sha512": "sha512-7520vJ+7SmwnVxD/aHZpVfEvSRN4Lf8sG1Brwq0wyqV6kA/kwOVAF9Ijr/ZFnOYuxA/DTf2qzXIyBG1YS8F+dw==",
+      "path": "microsoft.codeanalysis.visualbasic/4.1.0",
+      "hashPath": "microsoft.codeanalysis.visualbasic.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.VisualBasic.Workspaces/3.9.0": {
+    "Microsoft.CodeAnalysis.VisualBasic.Workspaces/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xHWygW92XATYLSTxn8Im954Jjs3sRVydb5YQ+TwIWXRdUO3pV11V43BRwhYaVtoI5HOTGxBq/VWVMw2JJTyuvg==",
-      "path": "microsoft.codeanalysis.visualbasic.workspaces/3.9.0",
-      "hashPath": "microsoft.codeanalysis.visualbasic.workspaces.3.9.0.nupkg.sha512"
+      "sha512": "sha512-t6xfuVqzXES3CDoSpLLMFuHupWmLNlUOIDPomot7UbGjkKB1YpzNQsQgDh6tsxiTONhIYx3leJp36HN6rWatOA==",
+      "path": "microsoft.codeanalysis.visualbasic.workspaces/4.1.0",
+      "hashPath": "microsoft.codeanalysis.visualbasic.workspaces.4.1.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Workspaces.Common/3.9.0": {
+    "Microsoft.CodeAnalysis.Workspaces.Common/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y3MEAsMOmPSIPc8aPJD1lzerABl50vE3nrMv8AVn6WFeDMC0htgWdmcrvySIbVgfep9SjdDoEfv11BCXthVLhw==",
-      "path": "microsoft.codeanalysis.workspaces.common/3.9.0",
-      "hashPath": "microsoft.codeanalysis.workspaces.common.3.9.0.nupkg.sha512"
+      "sha512": "sha512-Xzb15T20r9qDN0REgTZLdKTzXsZr/zxAy8Jq/w00y32wrJGBZLPz8mR2KLZ1f1ujv5jaQZ040GPmmFVYz8c2ag==",
+      "path": "microsoft.codeanalysis.workspaces.common/4.1.0",
+      "hashPath": "microsoft.codeanalysis.workspaces.common.4.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -991,12 +991,12 @@
       "path": "system.io/4.3.0",
       "hashPath": "system.io.4.3.0.nupkg.sha512"
     },
-    "System.IO.Pipelines/5.0.0": {
+    "System.IO.Pipelines/5.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-irMYm3vhVgRsYvHTU5b2gsT2CwT/SMM6LZFzuJjpIvT5Z4CshxNsaoBC1X/LltwuR3Opp8d6jOS/60WwOb7Q2Q==",
-      "path": "system.io.pipelines/5.0.0",
-      "hashPath": "system.io.pipelines.5.0.0.nupkg.sha512"
+      "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
+      "path": "system.io.pipelines/5.0.1",
+      "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",

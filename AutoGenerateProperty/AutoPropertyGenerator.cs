@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -7,22 +8,61 @@ using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.DotnetRuntime.Extensions;
 using Microsoft.CodeAnalysis.Text;
 
 
 namespace Amenonegames.AutoProperty.Generator
 {
-    [Generator]
-    public class AutoPropertyGenerator : ISourceGenerator
+    [Generator(LanguageNames.CSharp)]
+    public class AutoPropertyGenerator : IIncrementalGenerator
     {
         
-        public void Initialize(GeneratorInitializationContext context)
+        public void Initialize(IncrementalGeneratorInitializationContext  context)
         {
-            context.RegisterForPostInitialization(x => SetDefaultAttribute(x));
-            context.RegisterForSyntaxNotifications( () => new SyntaxReceiver() );
+            context.RegisterPostInitializationOutput(x => SetDefaultAttribute(x));
+            var provider = context.SyntaxProvider.ForAttributeWithMetadataName
+                (
+                    context,
+                    "AutoProperty.AutoPropAttribute",
+                    (node, cancellation) => node is FieldDeclarationSyntax,
+                    (cont, cancellation) => cont
+                )
+                .Combine(context.CompilationProvider);
+
+            context.RegisterSourceOutput(
+                context.CompilationProvider.Combine(provider.Collect()),
+                (sourceProductionContext, t) =>
+                    Emit(sourceProductionContext, t)); //context.RegisterForSyntaxNotifications( () => new SyntaxReceiver() );
         }
         
-        private void SetDefaultAttribute(GeneratorPostInitializationContext context)
+        
+        class SyntaxReceiver : ISyntaxReceiver
+        {
+            public List<(FieldDeclarationSyntax field, AttributeSyntax attr)> TargetFields { get; } = new List<(FieldDeclarationSyntax field, AttributeSyntax attr)>();
+
+            public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
+            {
+                if (syntaxNode is FieldDeclarationSyntax field)
+                {
+                    foreach (var attributeList in field.AttributeLists)
+                    {
+                        foreach (var attribute in attributeList.Attributes)
+                        {
+                            // ここで属性の名前をチェックします
+                            if (attribute.Name.ToString().EndsWith("AutoPropAttribute") ||
+                                attribute.Name.ToString().EndsWith("AutoProp")) // 短縮形も考慮
+                            {
+                                TargetFields.Add((field,attribute));
+                                return; // 一致する属性が見つかったら、他の属性はチェックしない
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        private void SetDefaultAttribute(IncrementalGeneratorPostInitializationContext context)
         {
             // AutoPropertyAttributeのコード本体
             const string AttributeText = @"
@@ -105,12 +145,13 @@ namespace AutoProperty
         }
         
 
-        public void Execute(GeneratorExecutionContext context)
+        void Emit( SourceProductionContext sourceProductionContext, (Compilation compilation, ImmutableArray<(GeneratorAttributeSyntaxContext attrContext, Compilation attrCompilation)> attrArray) t)
         {
+            var receiver = t.attrArray;
             //Context.SyntaxReceiverというプロパティに格納されているので
             //それを取得する
-            var receiver = context.SyntaxReceiver as SyntaxReceiver;
-            if (receiver == null) return;
+            // var receiver = context.SyntaxReceiver as SyntaxReceiver;
+            // if (receiver == null) return;
             
             var fieldSymbols = new List<SymbolsInVariable>();
 
@@ -423,30 +464,7 @@ namespace AutoProperty
 
     }
 
-    class SyntaxReceiver : ISyntaxReceiver
-    {
-        public List<(FieldDeclarationSyntax field, AttributeSyntax attr)> TargetFields { get; } = new List<(FieldDeclarationSyntax field, AttributeSyntax attr)>();
 
-        public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
-        {
-            if (syntaxNode is FieldDeclarationSyntax field)
-            {
-                foreach (var attributeList in field.AttributeLists)
-                {
-                    foreach (var attribute in attributeList.Attributes)
-                    {
-                        // ここで属性の名前をチェックします
-                        if (attribute.Name.ToString().EndsWith("AutoPropAttribute") ||
-                            attribute.Name.ToString().EndsWith("AutoProp")) // 短縮形も考慮
-                        {
-                            TargetFields.Add((field,attribute));
-                            return; // 一致する属性が見つかったら、他の属性はチェックしない
-                        }
-                    }
-                }
-            }
-        }
-    }
     
     
 }
